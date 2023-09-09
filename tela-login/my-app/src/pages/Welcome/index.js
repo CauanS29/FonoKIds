@@ -5,29 +5,50 @@ import {
     StyleSheet,
     Image,
     TouchableOpacity,
+    ImageBackground,
     Text } from 'react-native' 
 
 import * as Animatable from 'react-native-animatable'
 
+import { useNavigation } from '@react-navigation/native'
+
+const image = '../../assets/wallpaper.jpeg'
+
 export default function Welcome(){
+    const navigation = useNavigation();
+
     return(
         <View style={styles.container}>
+            <ImageBackground 
+            source={image} 
+            resizeMode='cover' 
+            style = {styles.image}
+            >
+
+            </ImageBackground>
             <View style={styles.containerLogo}>
-                <Image
-                 source={require('../../assets/logo.png')}  
-                 style={{ width: '100%'}}
-                 resizeMode='contain'
+                <Animatable.Image
+                  animation="flipInY"
+                  source={require('../../assets/fonoLogo.png')}  
+                  style={{ width: '100%'}}
+                  resizeMode='contain'
                 />
+               
+                
+              
             </View>
 
-            <View style={styles.containerForm}>
+            <Animatable.View delay={600} animation="fadeInUp" style={styles.containerForm}>
                 <Text style={styles.title}>Monitore, organize seus gastos de qualquer lugar</Text>
                 <Text style={styles.text}>Faça o login para começar</Text>
 
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity 
+                style={styles.button}
+                onPress={ () => navigation.navigate('SignIn')}
+                >
                     <Text style={styles.buttonText}>Acessar</Text>
                 </TouchableOpacity>
-            </View>
+            </Animatable.View>
         </View>
     )
 }
@@ -35,7 +56,11 @@ export default function Welcome(){
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        backgroundColor: '#38a69d'
+        
+    },
+    image:{
+        flex:1,
+        justifyContent: 'center'
     },
     containerLogo:{
         flex:2,
