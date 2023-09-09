@@ -20,13 +20,44 @@ export default function Welcome(){
     return(
         <View style={styles.container}>
             <ImageBackground
-            source={require('../../assets/wallpaper.png')}
+            source={require('../../assets/wallpaperWelcome.png')}
             resizeMode='cover' 
             style ={styles.image}
             >
-        <View style={styles.header}>
-            <Text style={styles.headerText}>Olá, Cauan!</Text>
-        </View>
+                <View style={styles.header}>
+                    <Text style={styles.headerText}>Olá, Cauan!</Text>
+                </View>
+
+                <View style={styles.containerLogo}>
+                    <View style={styles.imageContainer}>
+                        <Animatable.Image
+                        animation='flipInY'
+                        source={require('../../assets/logo.png')}
+                        style={styles.logo}
+                        resizeMode='contain'
+                        />
+                    </View>
+
+                    <View style={styles.imageContainer}>
+                        <Animatable.Image
+                        animation='flipInY'
+                        source={require('../../assets/logo.png')}
+                        style={styles.logo}
+                        resizeMode='contain'
+                        />
+                    </View>
+
+                    <View style={styles.imageContainer}>
+                        <Animatable.Image
+                        animation='flipInY'
+                        source={require('../../assets/logo.png')}
+                        style={styles.logo}
+                        resizeMode='contain'
+                        />
+                    </View>
+                </View>
+
+
             </ImageBackground>
         </View>
     )
@@ -52,11 +83,23 @@ const styles = StyleSheet.create({
         color: '#667781', 
       },
     containerLogo:{
-        flex:2,
-        backgroundColor: '#38a69d',
+        flex:1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        flexDirection: 'row',
     },
+    imageContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginHorizontal: 10, 
+        width: '50px',
+      },
+      logo: {
+        width: '100%', 
+        height: 'auto', 
+        maxWidth: '33%', 
+      },
     containerForm:{
         flex:1,
         backgroundColor: '#FFF',
