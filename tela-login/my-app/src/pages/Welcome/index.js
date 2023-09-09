@@ -90,6 +90,7 @@ const styles = StyleSheet.create({
     },
     imageContainer: {
         flex: 1,
+        flexWrap: 'wrap',
         justifyContent: 'center',
         alignItems: 'center',
         marginHorizontal: 10, 
@@ -97,8 +98,6 @@ const styles = StyleSheet.create({
       },
       logo: {
         width: '100%', 
-        height: 'auto', 
-        maxWidth: '33%', 
       },
     containerForm:{
         flex:1,
