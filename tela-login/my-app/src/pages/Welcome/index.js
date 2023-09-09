@@ -12,56 +12,45 @@ import * as Animatable from 'react-native-animatable'
 
 import { useNavigation } from '@react-navigation/native'
 
-const image = '../../assets/wallpaper.jpeg'
+const image = '../../assets/wallpaper.png'
 
 export default function Welcome(){
     const navigation = useNavigation();
 
     return(
         <View style={styles.container}>
-            <ImageBackground 
-            source={image} 
+            <ImageBackground
+            source={require('../../assets/wallpaper.png')}
             resizeMode='cover' 
-            style = {styles.image}
+            style ={styles.image}
             >
-
+        <View style={styles.header}>
+            <Text style={styles.headerText}>Olá, Cauan!</Text>
+        </View>
             </ImageBackground>
-            <View style={styles.containerLogo}>
-                <Animatable.Image
-                  animation="flipInY"
-                  source={require('../../assets/fonoLogo.png')}  
-                  style={{ width: '100%'}}
-                  resizeMode='contain'
-                />
-               
-                
-              
-            </View>
-
-            <Animatable.View delay={600} animation="fadeInUp" style={styles.containerForm}>
-                <Text style={styles.title}>Monitore, organize seus gastos de qualquer lugar</Text>
-                <Text style={styles.text}>Faça o login para começar</Text>
-
-                <TouchableOpacity 
-                style={styles.button}
-                onPress={ () => navigation.navigate('SignIn')}
-                >
-                    <Text style={styles.buttonText}>Acessar</Text>
-                </TouchableOpacity>
-            </Animatable.View>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    container:{
-        flex:1,
-        
-    },
-    image:{
-        flex:1,
-        justifyContent: 'center'
-    },
+    container: {
+        flex: 1,
+      },
+      image: {
+        flex: 1,
+      },
+      header: {
+        position: 'absolute', 
+        top: 16, 
+        left: 0, 
+        padding: 16, 
+      },
+      headerText: {
+        fontFamily: 'sans-serif',
+        fontSize: 36,
+        fontWeight: 'bold',
+        color: '#667781', 
+      },
     containerLogo:{
         flex:2,
         backgroundColor: '#38a69d',
