@@ -6,22 +6,30 @@ import {
     Image,
     TouchableOpacity,
     ImageBackground,
-    Text
+    Text,
+    Linking,
+
 } from 'react-native'
 
 import * as Animatable from 'react-native-animatable'
 
 import { useNavigation } from '@react-navigation/native'
 
-const image = '../../assets/wallpaper.png'
+const phoneNumber = '(75) 99943-5547'; 
+
+const message = 'Boa noite Dra. Lalay';
+
+const whatsappURL = `whatsapp://send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
 
 export default function Welcome() {
     const navigation = useNavigation();
 
+    
+
     return (
         <View style={styles.container}>
             <ImageBackground
-                source={require('../../assets/wallpaperWelcome.png')}
+                source={require('../../assets/novoWallpaperWelcome.png')}
                 resizeMode='cover'
                 style={styles.image}
             >
@@ -56,7 +64,6 @@ export default function Welcome() {
                                 style={styles.logo}
                             />
                         </TouchableOpacity>
-
                     </View>
 
                     <View style={styles.imageContainer}>
@@ -72,8 +79,33 @@ export default function Welcome() {
                             />
                         </TouchableOpacity>
                     </View>
+
                 </View>
 
+                <View style={styles.zapContainer}>
+                        <TouchableOpacity
+                            style={styles.zapImage}
+                            onPress={() => {
+                    
+                                Linking.openURL(whatsappURL)
+                                    .then((data) => {
+                                        console.log('WhatsApp aberto com sucesso:', data);
+                                    })
+                                    .catch((error) => {
+                                        console.error('Erro ao abrir o WhatsApp:', error);
+                                    });
+                            }}
+                        >
+                            <Animatable.Image
+                                animation='flipInY'
+                                source={require('../../assets/zap.png')}
+                                resizeMode='contain'
+                                style={styles.zapImage}
+                            />
+                        </TouchableOpacity>
+                    </View>
+
+              
 
             </ImageBackground>
         </View>
@@ -111,6 +143,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginHorizontal: 10,
         width: '70px',
+    },
+    zapContainer:{
+        flex: 1,
+        position: 'absolute',
+        bottom: 16, 
+        right: 16,
+    },
+    zapImage:{
+        width: 60, 
+        height: 60,
+        marginBottom: 80,
     },
     logo: {
         width: '100%',
