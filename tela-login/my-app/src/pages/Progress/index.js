@@ -16,10 +16,10 @@ export default function Progress(){
     const navigation = useNavigation();
     
     return (
-        <View styles={styles.container}>
+        <View style={styles.container}>
             <ImageBackground
-            source={require('../../assets/wallpaper.png')}
-            resizeMode='cover' 
+            source={require('../../assets/wallpaperProgress.png')}
+            resizeMode='contain' 
             style ={styles.image}
             >
 
@@ -33,5 +33,11 @@ export default function Progress(){
 const styles = StyleSheet.create({
     container:{
         flex:1,
+        backgroundColor: '#E6B742',
+       
+    },
+    image: {
+        flex: 1,
+        height: "100%",
     },
 })
